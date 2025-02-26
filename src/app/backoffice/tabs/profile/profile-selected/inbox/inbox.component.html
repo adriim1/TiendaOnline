@@ -1,0 +1,88 @@
+
+<div class="top-bar">
+  <div class="left-section">
+    <i class="bi bi-list me-2 menu-icon"></i>
+    <div class="logo">Inbox</div>
+  </div>
+
+  <div class="search-bar">
+    <i class="bi bi-search me-2 search-icon"></i>
+    <input type="text" placeholder="Buscar correo">
+    <i class="bi bi-mic-fill ms-2 mic-icon"></i>
+  </div>
+
+  <div class="right-section">
+    <i class="bi bi-question-circle me-2"></i>
+    <i class="bi bi-gear me-2"></i>
+    <i class="bi bi-grid-3x3-gap me-2"></i>
+    <div class="avatar">A</div>
+  </div>
+</div>
+
+<div class="main-container">
+  <aside class="sidebar">
+    <button class="compose-btn">
+      <i class="bi bi-pencil-square me-2"></i>
+      Redactar
+    </button>
+
+    <ul class="menu-list">
+      <li class="menu-item active">
+        <i class="bi bi-inbox me-2"></i>
+        Recibidos
+      </li>
+      <li class="menu-item">
+        <i class="bi bi-star me-2"></i>
+        Destacados
+      </li>
+      <li class="menu-item">
+        <i class="bi bi-clock me-2"></i>
+        Pospuestos
+      </li>
+      <li class="menu-item">
+        <i class="bi bi-send me-2"></i>
+        Enviados
+      </li>
+      <li class="menu-item">
+        <i class="bi bi-file-earmark me-2"></i>
+        Borradores
+      </li>
+      <li class="menu-item">
+        <i class="bi bi-caret-down-fill me-2"></i>
+        Más
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Área principal -->
+  <div class="content">
+    <div class="tabs">
+      <div
+        class="tab"
+        *ngFor="let tab of tabs; let i = index"
+        [class.active]="tab.active"
+        (click)="activateTab(i)"
+      >
+        {{ tab.label }}
+        <span *ngIf="tab.label === 'Principal'" class="tag-count">3 nuevos</span>
+      </div>
+    </div>
+
+    <div class="mail-list">
+      <div
+        class="mail-item"
+        *ngFor="let mail of mailList"
+        [class.unread]="mail.unread"
+      >
+        <div class="checkbox">
+          <input type="checkbox" />
+        </div>
+        <i class="bi bi-star me-2 star-icon"></i>
+        <div class="from">{{ mail.from }}</div>
+        <div class="subject">{{ mail.subject }}</div>
+        <div class="snippet">{{ mail.snippet }}</div>
+        <div class="time">{{ mail.time }}</div>
+      </div>
+    </div>
+  </div>
+</div>

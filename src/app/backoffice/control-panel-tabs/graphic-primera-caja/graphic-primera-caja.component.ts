@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {BaseChartDirective} from 'ng2-charts';
-import {ChartConfiguration, ChartDataset, ChartType} from 'chart.js';
+import { Component, OnInit } from '@angular/core';
+import { BaseChartDirective } from 'ng2-charts';
+import { ChartConfiguration, ChartDataset, ChartType } from 'chart.js';
 
 @Component({
   selector: 'app-graphic-primera-caja',
@@ -11,53 +11,33 @@ import {ChartConfiguration, ChartDataset, ChartType} from 'chart.js';
 })
 export class GraphicPrimeraCajaComponent implements OnInit {
 
-  ngOnInit(): void {
-    this.setChartData()
-  }
-
   public doughnutChartOptions: ChartConfiguration['options'] = {
-    responsive: true, // Línea obligatoria
-    maintainAspectRatio: false, // Proporción del gráfico
+    responsive: true,
+    maintainAspectRatio: false,
     plugins: {
-      legend: { // campo opcional
+      legend: {
         display: true,
         position: 'bottom'
       },
       tooltip: {},
-      title: { // Campo opcional
-        text: "Primer gráfico",
+      title: {
+        text: 'Primer gráfico',
         display: true,
       }
     }
-  }
+  };
 
-  public doughnutChartLabels: string[] = []
-  public doughnutChartData: { labels: string[], datasets: ChartDataset<'doughnut'>[]} = {
-    labels: [],
+  public doughnutChartLabels: string[] = ["Label 1", "Label 2", "Label 3", "Label 4"];
+  
+  public doughnutChartData: { labels: string[], datasets: ChartDataset<'doughnut'>[] } = {
+    labels: this.doughnutChartLabels,
     datasets: [{
-      data: [],
-      backgroundColor: [],
-      hoverBackgroundColor: [],
+      data: [20, 30, 40, 50],
+      backgroundColor: ["red", "black", "green", "yellow"],
     }]
-  }
+  };
 
   public doughnutChartType: ChartType = 'doughnut';
 
-  private setChartData(): void {
-    this.doughnutChartLabels = [
-      "Label 1",
-      "Label 2",
-      "Label 3",
-      "Label 4",
-    ]
-    this.doughnutChartData.labels = [
-      "Label 1",
-      "Label 2",
-      "Label 3",
-      "Label 4",
-    ]
-    this.doughnutChartData.datasets[0].data = [20, 30, 40, 50]
-    this.doughnutChartData.datasets[0].backgroundColor = ["red", "black", "green", "yellow"]
-  }
-
+  ngOnInit(): void {}
 }
